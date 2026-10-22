@@ -1,3 +1,4 @@
+import layanan.EksporKatalog;
 import layanan.KatalogPerpustakaan;
 import eksepsi.PustakaException;
 import layanan.UrutLayakLaluJudul;
@@ -6,6 +7,7 @@ import model.BukuCetak;
 import model.Majalah;
 import model.Terarsip;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +59,15 @@ public class Main {
         System.out.println();
         System.out.println(" Status setelah peminjaman ");
         katalog.cetakStatus();
+
+        System.out.println();
+        System.out.println(" SOAL 6: Ekspor ke katalog.txt ");
+        try {
+            new EksporKatalog().ekspor(katalog, "katalog.txt");
+            System.out.println("Berhasil menulis katalog.txt");
+        } catch (IOException e) {
+            System.out.println("Gagal menulis berkas: " + e.getMessage());
+        }
     }
 
     private static void cobaPinjam(KatalogPerpustakaan katalog, String kode) {
