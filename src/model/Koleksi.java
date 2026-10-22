@@ -7,6 +7,7 @@ public abstract class Koleksi {
     private final String kodeKoleksi;
     private final String judul;
     private final int tahunTerbit;
+    private boolean sedangDipinjam;
 
     public Koleksi(String kodeKoleksi, String judul, int tahunTerbit) {
         this.kodeKoleksi = kodeKoleksi;
@@ -26,10 +27,18 @@ public abstract class Koleksi {
         return tahunTerbit;
     }
 
-    /** Aturan kelayakan pinjam, wajib ditentukan oleh setiap turunan. */
-    public abstract boolean layakDipinjam();
+    public boolean isSedangDipinjam() {
+        return sedangDipinjam;
+    }
 
-    /** Deskripsi dasar, diperluas oleh setiap turunan memakai super. */
+    public void setSedangDipinjam(boolean sedangDipinjam) {
+        this.sedangDipinjam = sedangDipinjam;
+    }
+
+
+    public abstract boolean layakDipinjam();
+  
+   
     public String deskripsi() {
         return kodeKoleksi + " | " + judul + " | " + tahunTerbit;
     }
