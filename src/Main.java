@@ -1,4 +1,5 @@
 import layanan.KatalogPerpustakaan;
+import layanan.UrutLayakLaluJudul;
 import model.BerkasDigital;
 import model.BukuCetak;
 import model.Majalah;
@@ -24,7 +25,7 @@ public class Main {
         katalog.tambah(bd1);
         katalog.tambah(bd2);
 
-        System.out.println(" SOAL 1 & 3: Status Koleksi (polimorfik)");
+        System.out.println(" SOAL 1 & 3: Status Koleksi (polimorfik) ");
         katalog.cetakStatus();
 
         System.out.println();
@@ -37,5 +38,10 @@ public class Main {
         for (Terarsip t : arsip) {
             System.out.println(t.ringkasanArsip());
         }
+
+        System.out.println();
+        System.out.println(" SOAL 4: Urut Layak Lalu Judul ");
+        katalog.urut(new UrutLayakLaluJudul());
+        katalog.cetakStatus();
     }
 }

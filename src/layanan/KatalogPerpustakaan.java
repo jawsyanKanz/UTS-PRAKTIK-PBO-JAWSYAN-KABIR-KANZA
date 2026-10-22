@@ -4,6 +4,7 @@ import model.Koleksi;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class KatalogPerpustakaan {
@@ -17,12 +18,16 @@ public class KatalogPerpustakaan {
         return Collections.unmodifiableList(daftar);
     }
 
-    /** Memproses seluruh koleksi secara polimorfik, tanpa percabangan tipe. */
     public void cetakStatus() {
         int nomor = 1;
         for (Koleksi k : daftar) {
             System.out.println(nomor++ + ". " + k.deskripsi());
             System.out.println("   Status: " + (k.layakDipinjam() ? "LAYAK DIPINJAM" : "TIDAK LAYAK DIPINJAM"));
         }
+    }
+
+
+    public void urut(Comparator<? super Koleksi> pembanding) {
+        daftar.sort(pembanding);
     }
 }
